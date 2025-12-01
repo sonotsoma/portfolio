@@ -22,6 +22,11 @@ function updateTime() {
     if (timeDisplay) {
         timeDisplay.textContent = timeString;
     }
+    
+    const timeDisplayFooter = document.getElementById('time-display-footer');
+    if (timeDisplayFooter) {
+        timeDisplayFooter.textContent = timeString;
+    }
 }
 
 // Update time immediately on page load
