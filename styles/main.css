@@ -65,15 +65,16 @@ body {
 /* Brand Name */
 .home {
     flex-shrink: 0;
+    min-width: 10ch;
+    text-align: left;
 }
 
 .home-button {
-    font-family: var(--font-inter);
+    display: inline-block;
     font-size: 14px;
     font-weight: 500;
     text-decoration: none;
     color: var(--text-primary);
-    transition: color 0.3s ease;
 }
 
 /* Navigation Links */
@@ -86,43 +87,50 @@ body {
 }
 
 .nav-links li {
+    width: 72px;
     text-decoration: none;
     border-bottom: none;
 }
 
 .nav-links a {
+    display: inline-block;
+    width: 72px;
+    text-align: center;
     text-decoration: none !important;
     color: var(--text-secondary);
-    font-size: 14px;
     font-weight: 500;
     font-family: var(--font-inter);
-    transition: font-family 0.3s ease, font-style 0.3s ease;
+    transition: font-family 0s, font-style 0s;
     position: relative;
-    border-bottom: none !important;
+    border: none !important;
 }
 
 .nav-links a:hover {
+    font-family: var(--font-instrument-serif);
+    font-style: italic;
     color: var(--text-secondary);
+    text-decoration: none !important;
+    text-underline-position: none;
+    width: 72px;
+    border: none;
+}
+
+.nav-links a:visited,
+.nav-links a:active,
+.nav-links a:focus {
+    text-decoration: none !important;
+    border: none !important;
 }
 
 .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--text-primary);
-    transition: width 0s ease;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
+    display: none;
 }
 
 /* Time Display */
 .current-time {
     flex-shrink: 0;
+    min-width: 10ch;
+    text-align: right;
     font-family: var(--font-inter);
     font-weight: 500;
     color: var(--text-secondary);
@@ -130,51 +138,5 @@ body {
 
 #time-display {
     white-space: nowrap;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .navigation-bar-container {
-        flex-wrap: wrap;
-        gap: var(--spacing-sm);
-    }
-    
-    .navigation-links {
-        order: 3;
-        width: 100%;
-        justify-content: space-around;
-        gap: var(--spacing-sm);
-        padding-top: var(--spacing-sm);
-        border-top: 1px solid var(--border-color);
-    }
-    
-    .nav-current-time {
-        order: 2;
-    }
-    
-    .home-button {
-        font-size: 1;
-    }
-    
-    .navigation-links a {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .navigation-bar-container {
-        padding: 0 var(--spacing-sm);
-    }
-    
-    .navigation-links {
-        gap: var(--spacing-xs);
-    }
-    
-    .navigation-links a {
-        font-size: 0.85rem;
-    }
-    
-    .nav-current-time {
-        font-size: 0.85rem;
-    }
+    display: inline-block;
 }
