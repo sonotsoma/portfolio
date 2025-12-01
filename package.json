@@ -1,0 +1,10 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website",
+  "scripts": {
+    "dev": "npx http-server -p 8080 -o",
+    "preview": "npx http-server -p 8080 -o"
+  },
+  "devDependencies": {}
+}

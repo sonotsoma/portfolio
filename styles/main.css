@@ -1,0 +1,180 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colors */
+    --text-primary: #000000;
+    --text-secondary: #999999;
+    --bg-primary: #ffffff;
+    --border-color: #e0e0e0;
+    
+    /* Typography */
+    --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    --font-instrument-serif: 'Instrument Serif', serif;
+    --font-size-base: 14px;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+}
+
+html {
+    font-size: 14px;
+    letter-spacing: -0.04em;
+}
+
+body {
+    font-family: var(--font-inter);
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    line-height: 20px; /* Add padding to account for fixed header */
+}
+
+/* Header Navigation */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: var(--bg-primary);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.nav-bar {
+    padding: 8px 0;
+}
+
+.nav-bar-container {
+    width: 100%;
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+/* Brand Name */
+.home {
+    flex-shrink: 0;
+}
+
+.home-button {
+    font-family: var(--font-inter);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 64px;
+    flex: 1;
+    justify-content: center;
+}
+
+.nav-links li {
+    text-decoration: none;
+    border-bottom: none;
+}
+
+.nav-links a {
+    text-decoration: none !important;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--font-inter);
+    transition: font-family 0.3s ease, font-style 0.3s ease;
+    position: relative;
+    border-bottom: none !important;
+}
+
+.nav-links a:hover {
+    color: var(--text-secondary);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--text-primary);
+    transition: width 0s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Time Display */
+.current-time {
+    flex-shrink: 0;
+    font-family: var(--font-inter);
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+#time-display {
+    white-space: nowrap;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navigation-bar-container {
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
+    
+    .navigation-links {
+        order: 3;
+        width: 100%;
+        justify-content: space-around;
+        gap: var(--spacing-sm);
+        padding-top: var(--spacing-sm);
+        border-top: 1px solid var(--border-color);
+    }
+    
+    .nav-current-time {
+        order: 2;
+    }
+    
+    .home-button {
+        font-size: 1;
+    }
+    
+    .navigation-links a {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navigation-bar-container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .navigation-links {
+        gap: var(--spacing-xs);
+    }
+    
+    .navigation-links a {
+        font-size: 0.85rem;
+    }
+    
+    .nav-current-time {
+        font-size: 0.85rem;
+    }
+}
