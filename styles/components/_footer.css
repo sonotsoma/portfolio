@@ -1,0 +1,113 @@
+/* Footer Navigation */
+.right-content-scroll footer.footer {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: 100%;
+    margin-top: 100px;
+    border-top: 1px solid var(--border-colour);
+    padding-top: 8px;
+}
+
+.nav-footer {
+    padding: 0 0 16px 0;
+}
+
+.nav-footer-container {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.nav-footer-links {
+    display: flex;
+    list-style: none;
+    gap: clamp(32px, 8vw, 64px);
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.nav-footer-links li {
+    text-decoration: none;
+    border-bottom: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.nav-footer-links a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none !important;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-family: var(--font-inter);
+    transition: font-family 0s, font-style 0s;
+    position: relative;
+    border: none !important;
+    white-space: nowrap;
+}
+
+.nav-footer-links a:visited,
+.nav-footer-links a:active,
+.nav-footer-links a:focus {
+    text-decoration: none !important;
+    border: none !important;
+}
+
+.nav-footer-links a:hover {
+    font-family: var(--font-instrument-serif);
+    font-style: italic;
+    color: var(--text-secondary);
+    text-decoration: none !important;
+    text-underline-position: none;
+    border: none;
+}
+
+.nav-footer-links a::after {
+    display: none;
+}
+
+/* OPEN TO WORK - No link styles, just blinking circle */
+.nav-footer-links .open-to-work {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    width: auto;
+    font-family: var(--font-inter);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #28C122;
+    display: inline-block;
+    animation: blink 1500ms steps(1, end) infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.footer a:hover {
+    font-family: var(--font-instrument-serif);
+    font-style: italic;
+    color: var(--text-secondary);
+    text-decoration: none !important;
+    text-underline-position: none;
+}
+

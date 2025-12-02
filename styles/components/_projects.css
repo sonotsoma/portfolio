@@ -1,0 +1,167 @@
+.project-container {
+    margin-bottom: 40px;
+}
+
+.project-container:last-child {
+    margin-bottom: 0;
+}
+
+.project-image {
+    width: 100%;
+    max-width: 696px;
+    height: 550px;
+    margin-bottom: 16px;
+    background-color: var(--project-container-inactive);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.project-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    pointer-events: none;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.project-image-coloured {
+    transform: translate(-50%, -50%) scale(0.905);
+    filter: grayscale(100%);
+}
+
+/* Project-specific scale ratios and hover effects */
+#project-container-budge-ai .project-image-coloured {
+    transform: translate(-50%, -50%) scale(0.905);
+}
+
+#project-container-budge-ai .project-image:hover .project-image-coloured {
+    transform: translate(-50%, -50%) scale(1);
+    filter: grayscale(0%);
+}
+
+#project-container-waymaker .project-image-coloured {
+    transform: translate(-50%, -50%) scale(0.902);
+}
+
+#project-container-waymaker .project-image:hover .project-image-coloured {
+    transform: translate(-50%, -50%) scale(1);
+    filter: grayscale(0%);
+}
+
+#project-container-kwame-ai .project-image-coloured {
+    transform: translate(-50%, -50%) scale(0.914);
+}
+
+#project-container-kwame-ai .project-image:hover .project-image-coloured {
+    transform: translate(-50%, -50%) scale(1);
+    filter: grayscale(0%);
+}
+
+#project-container-blocks .project-image-coloured {
+    transform: translate(-50%, -50%) scale(0.934);
+}
+
+#project-container-blocks .project-image:hover .project-image-coloured {
+    transform: translate(-50%, -50%) scale(1);
+    filter: grayscale(0%);
+}
+
+#project-container-tbdex-go .project-image-coloured {
+    transform: translate(-50%, -50%) scale(0.903);
+}
+
+#project-container-tbdex-go .project-image:hover .project-image-coloured {
+    transform: translate(-50%, -50%) scale(1);
+    filter: grayscale(0%);
+}
+
+/* Project image hover background colors */
+#project-container-budge-ai .project-image:hover {
+    background-color: #F3FEF3;
+}
+
+#project-container-waymaker .project-image:hover {
+    background-color: #FFFAF5;
+}
+
+#project-container-kwame-ai .project-image:hover {
+    background-color: #EDF5FF;
+}
+
+#project-container-blocks .project-image:hover {
+    background-color: #F5F3FF;
+}
+
+#project-container-tbdex-go .project-image:hover {
+    background-color: #FEFFE4;
+}
+
+.project-info {
+    padding: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+    max-width: 696px;
+    box-sizing: border-box;
+}
+
+.project-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.project-title {
+    font-family: var(--font-inter);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0 0 0 0;
+}
+
+.project-title-italic {
+    font-family: var(--font-inter);
+    font-size: 14px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.project-role {
+    font-family: var(--font-inter);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.project-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+}
+
+.read-more-btn {
+    font-family: var(--font-inter);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    background: transparent;
+    border: 1px solid var(--border-colour);
+    padding: 4px 8px;
+    cursor: pointer;
+    margin-left: auto;
+    letter-spacing: -0.04em;
+}
+

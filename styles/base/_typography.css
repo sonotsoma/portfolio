@@ -1,0 +1,14 @@
+html {
+    font-size: 14px;
+    letter-spacing: -0.04em;
+}
+
+body {
+    font-family: var(--font-inter);
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    line-height: 20px;
+    height: 100vh;
+    overflow: hidden;
+}
+
