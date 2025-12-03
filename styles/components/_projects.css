@@ -67,6 +67,7 @@
 
 #project-container-blocks .project-image-coloured {
     transform: translate(-50%, -50%) scale(0.934);
+    filter: grayscale(100%) brightness(1.15);
 }
 
 #project-container-blocks .project-image:hover .project-image-coloured {
@@ -137,12 +138,44 @@
     margin: 0;
 }
 
+.project-role-wrapper {
+    position: relative;
+    height: 20px;
+    overflow: hidden;
+}
+
 .project-role {
     font-family: var(--font-inter);
     font-size: 14px;
     font-weight: 400;
     color: var(--text-secondary);
     margin: 0;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.project-role-alt {
+    font-family: var(--font-inter);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+/* Slide animation on hover */
+.project-container:hover .project-role {
+    transform: translateY(-100%);
+}
+
+.project-container:hover .project-role-alt {
+    transform: translateY(0);
 }
 
 .project-meta {
@@ -152,6 +185,10 @@
     flex: 1;
 }
 
+.read-more-wrapper {
+    margin-left: auto;
+}
+
 .read-more-btn {
     font-family: var(--font-inter);
     font-size: 14px;
@@ -159,9 +196,58 @@
     color: var(--text-primary);
     background: transparent;
     border: 1px solid var(--border-colour);
-    padding: 4px 8px;
+    padding: 4px 4px 4px 8px;
     cursor: pointer;
-    margin-left: auto;
     letter-spacing: -0.04em;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+    overflow: hidden;
+    transition: padding-right 0.5s ease;
+    width: fit-content;
+}
+
+.read-more-text {
+    white-space: nowrap;
+}
+
+.arrow-right-container {
+    width: 0;
+    height: 20px;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.5s ease;
+}
+
+.arrow-right-icon {
+    width: 20px;
+    height: 20px;
+    transform: translateX(-24px);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    display: block;
+    opacity: 0;
+}
+
+/* Trigger on project container hover (same as image hover) */
+.project-container {
+    cursor: pointer;
+}
+
+.project-container:hover .read-more-btn {
+    padding-right: 8px;
+}
+
+.project-container:hover .arrow-right-container {
+    width: 20px;
+}
+
+.project-container:hover .arrow-right-icon {
+    transform: translateX(0);
+    opacity: 1;
 }
 

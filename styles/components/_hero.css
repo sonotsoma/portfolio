@@ -17,9 +17,7 @@ main {
 }
 
 /* Left Content / Fixed */
-#ampersand {
-    font-family: 'Meie Script', cursive;
-}
+/* Note: #ampersand font animation is in utilities/_animations.css */
 
 .left-content-fixed {
     flex: 0 0 50%;
@@ -45,8 +43,18 @@ main {
     color: var(--text-primary);
     margin: 0;
     padding: 0;
-    line-height: 84%;
     letter-spacing: -0.08em;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-line {
+    line-height: 84%;
+    display: block;
+}
+
+#ampersand {
+    display: inline;
 }
 
 .experience-description {
@@ -68,7 +76,7 @@ main {
     font-size: 14px;
     color: var(--text-secondary);
     margin: 0;
-    padding: 0 0 16px 0;
+    padding: 0;
 }
 
 #github-link {
