@@ -8,10 +8,10 @@ main {
 .content-container {
     display: flex;
     height: calc(100vh - 100px);
-    max-width: 1440px;
+    max-width: 2560px;
     width: 100%;
-    margin: 0;
-    padding: 0 16px 16px 16px;
+    margin: 0 auto;
+    padding: 0;
     gap: 16px;
     box-sizing: border-box;
 }
@@ -20,16 +20,14 @@ main {
 /* Note: #ampersand font animation is in utilities/_animations.css */
 
 .left-content-fixed {
-    flex: 0 0 50%;
+    flex: 1 1 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 0;
+    padding: 0 0 16px 0;
     overflow: hidden;
     min-width: 0;
     box-sizing: border-box;
-    padding-left: 0;
-    padding-right: 0;
 }
 
 .hero-copy {
@@ -38,7 +36,7 @@ main {
 
 .hero-copy .title {
     font-family: var(--font-instrument-serif);
-    font-size: 160px;
+    font-size: clamp(60px, 11.09375vw, 500px);
     font-weight: 400;
     color: var(--text-primary);
     margin: 0;
@@ -46,6 +44,7 @@ main {
     letter-spacing: -0.08em;
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .title-line {
@@ -91,17 +90,17 @@ main {
 
 /* Right Content / Scroll */
 .right-content-scroll {
-    flex: 0 0 50%;
+    flex: 1 1 50%;
     overflow-y: auto;
     overflow-x: hidden;
     height: 100%;
+    max-height: 100%;
     padding: 0;
+    /* padding-top: calc(clamp(60px, 11.09375vw, 500px) * 0.84 * 2); */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
     min-width: 0;
     box-sizing: border-box;
-    padding-left: 0;
-    padding-right: 0;
 }
 
 .right-content-scroll::-webkit-scrollbar {

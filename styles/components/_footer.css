@@ -11,16 +11,19 @@
 }
 
 .nav-footer {
-    padding: 0 0 0 0;
+    padding: 0 0 16px 0;
 }
 
 .nav-footer-container {
+    max-width: 2560px;
     width: 100%;
+    margin: 0 auto;
     padding: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: var(--spacing-md);
+    box-sizing: border-box;
 }
 
 .nav-footer-links {
