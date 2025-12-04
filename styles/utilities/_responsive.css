@@ -1,3 +1,109 @@
 /* Responsive styles and media queries */
 /* Add responsive breakpoints here as needed */
 
+/* Tablet breakpoint: 992px to 1200px */
+@media screen and (min-width: 992px) and (max-width: 1340px) {
+    /* Make whole page scrollable */
+    body {
+        overflow: auto;
+        height: auto;
+    }
+
+    main {
+        overflow: visible;
+        height: auto;
+    }
+
+    /* Stack content vertically */
+    .content-container {
+        flex-direction: column;
+        height: auto;
+        min-height: calc(100vh - 100px);
+    }
+
+    /* Left content - full width */
+    .left-content-fixed {
+        flex: 1 1 100%;
+        width: 100%;
+        padding: 0 0 40px 0; /* 40px spacing before scrollable area */
+        overflow: visible;
+    }
+
+    /* Right content - full width, stacked below */
+    .right-content-scroll {
+        flex: 1 1 100%;
+        width: 100%;
+        overflow: visible;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px 16px;
+    }
+
+    /* Remove margin-bottom from project containers in grid */
+    .right-content-scroll .project-container {
+        margin-bottom: 0;
+    }
+
+    /* Stack project info vertically - button under title/role */
+    .project-info {
+        flex-direction: column;
+        gap: 0; /* Remove default gap */
+        align-items: flex-start;
+    }
+
+    .project-meta {
+        margin-bottom: 0;
+    }
+
+    .read-more-wrapper {
+        margin-left: 0;
+        margin-top: 8px;
+        margin-bottom: 0;
+    }
+
+    /* Footer spans full width in grid */
+    .right-content-scroll footer.footer {
+        grid-column: 1 / -1;
+        margin-top: 40px;
+    }
+
+    /* Hero title scales from 160px to 216px */
+    .hero-copy .title {
+        font-size: clamp(160px, calc(160px + (100vw - 992px) * 0.160920), 216px);
+    }
+
+    /* Hero copy container for absolute positioning */
+    .hero-copy {
+        position: relative;
+    }
+
+    /* Subcopy aligned to right with absolute positioning, text left-justified */
+    .experience-description {
+        position: absolute;
+        right: 0;
+        bottom: calc((clamp(160px, calc(160px + (100vw - 992px) * 0.160920), 216px)) * 0.5); /* Align with baseline using x-height of current font size */
+        margin-left: 0;
+        margin-right: 0;
+        padding-top: 0;
+        text-align: left;
+    }
+
+    /* Hide copyright and "Built with Cursor" */
+    .left-content-fixed .footer {
+        display: none;
+    }
+
+    /* Header maintains white background to hide scrolling content */
+    .header {
+        background-color: #ffffff;
+    }
+}
+
+/* Large screen breakpoint: 1341px to 2560px */
+@media screen and (min-width: 1341px) and (max-width: 2560px) {
+    /* Hero title scales from 160px to 284px */
+    .hero-copy .title {
+        font-size: clamp(160px, calc(160px + (100vw - 1341px) * 0.101722), 284px);
+    }
+}
+

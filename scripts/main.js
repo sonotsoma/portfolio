@@ -48,3 +48,47 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// Header hide/show on scroll
+let lastScrollTop = 0;
+let isScrolling = false;
+let scrollTimeout;
+const header = document.querySelector('.header');
+
+function handleScroll() {
+    const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Clear existing timeout
+    clearTimeout(scrollTimeout);
+    
+    // Mark that scrolling is happening
+    isScrolling = true;
+    
+    // Hide header when scrolling down
+    if (currentScrollTop > lastScrollTop && currentScrollTop > 50) {
+        header.classList.add('header-hidden');
+    } else {
+        // Show header when scrolling up or at top
+        header.classList.remove('header-hidden');
+    }
+    
+    lastScrollTop = currentScrollTop;
+    
+    // Show header when scrolling stops
+    scrollTimeout = setTimeout(() => {
+        isScrolling = false;
+        header.classList.remove('header-hidden');
+    }, 100);
+}
+
+// Throttle scroll events for better performance
+let ticking = false;
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            handleScroll();
+            ticking = false;
+        });
+        ticking = true;
+    }
+});

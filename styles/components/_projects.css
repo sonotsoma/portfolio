@@ -1,5 +1,5 @@
 .project-container {
-    margin-bottom: 40px;
+    margin-bottom: 24px;
 }
 
 .project-container:last-child {
@@ -27,11 +27,13 @@
     max-height: 50%;
     object-fit: contain;
     transform: scale(1);
-    transition: transform 0.5s ease;
+    filter: grayscale(100%);
+    transition: transform 0.5s ease, filter 0.5s ease;
 }
 
 .project-container:hover .project-image-content {
     transform: scale(1.075);
+    filter: grayscale(0%);
 }
 
 
@@ -67,12 +69,14 @@
 
 
 .project-title {
+    font-size: 14px;
     font-weight: 500;
     color: var(--text-primary);
     margin: 0;
 }
 
 .project-title-italic {
+    font-size: 14px;
     font-weight: 300;
     font-style: italic;
     color: var(--text-primary);
@@ -86,6 +90,7 @@
 }
 
 .project-role {
+    font-size: 14px;
     font-weight: 400;
     color: var(--text-secondary);
     margin: 0;
@@ -94,6 +99,7 @@
 }
 
 .project-role-alt {
+    font-size: 14px;
     font-weight: 400;
     color: var(--text-secondary);
     margin: 0;
@@ -127,6 +133,8 @@
 }
 
 .read-more-btn {
+    font-family: var(--font-inter);
+    font-size: 14px;
     font-weight: 500;
     color: var(--text-primary);
     background: transparent;

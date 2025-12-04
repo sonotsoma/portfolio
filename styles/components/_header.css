@@ -5,10 +5,13 @@
     left: 0;
     right: 0;
     width: 100%;
-    background-color: var(--bg-primary);
+    background-color: #ffffff;
     z-index: 1000;
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.95);
+    transition: transform 0.5s ease;
+}
+
+.header-hidden {
+    transform: translateY(-100%);
 }
 
 .nav-bar {
