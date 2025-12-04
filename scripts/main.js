@@ -67,18 +67,15 @@ function handleScroll() {
     // Hide header when scrolling down
     if (currentScrollTop > lastScrollTop && currentScrollTop > 50) {
         header.classList.add('header-hidden');
-    } else {
-        // Show header when scrolling up or at top
-        header.classList.remove('header-hidden');
     }
     
     lastScrollTop = currentScrollTop;
     
-    // Show header when scrolling stops
+    // Show header when scrolling stops or scrolling up (with 100ms delay)
     scrollTimeout = setTimeout(() => {
         isScrolling = false;
         header.classList.remove('header-hidden');
-    }, 100);
+    }, 500);
 }
 
 // Throttle scroll events for better performance
