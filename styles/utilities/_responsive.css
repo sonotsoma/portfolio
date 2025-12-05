@@ -109,10 +109,12 @@
 
     /* Experience description responsive */
     .experience-description {
+        position: relative; /* Remove absolute positioning */
         width: 100%;
         max-width: 212px;
-        margin-left: 0;
-        margin-left: 50%;
+        /* Scale margin-left from 320px at larger viewports to 0px at 240px */
+        /* Decreases as viewport shrinks (moves forward toward left) */
+        margin-left: clamp(0px, calc(320px + (100vw - 768px) * 0.606), 320px);
         padding-top: 16px;
         box-sizing: border-box;
     }
