@@ -32,7 +32,6 @@
     gap: clamp(32px, 8vw, 64px);
     flex: 1;
     justify-content: space-between;
-    align-items: center;
     flex-wrap: nowrap;
 }
 
@@ -54,6 +53,11 @@
     position: relative;
     border: none !important;
     white-space: nowrap;
+    width: 56px;
+}
+
+#arena-link {
+    width: 41px;
 }
 
 .nav-footer-links a:visited,

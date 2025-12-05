@@ -67,9 +67,9 @@
         margin-top: 40px;
     }
 
-    /* Hero title scales from 160px to 216px */
+    /* Hero title scales from 128px to 173px (proportional to base 128px) */
     .hero-copy .title {
-        font-size: clamp(160px, calc(160px + (100vw - 992px) * 0.160920), 216px);
+        font-size: clamp(128px, calc(128px + (100vw - 992px) * 0.128736), 173px);
     }
 
     /* Hero copy container for absolute positioning */
@@ -81,9 +81,7 @@
     .experience-description {
         position: absolute;
         right: 0;
-        bottom: calc((clamp(160px, calc(160px + (100vw - 992px) * 0.160920), 216px)) * 0.5); /* Align with baseline using x-height of current font size */
-        margin-left: 0;
-        margin-right: 0;
+        bottom: 12px;
         padding-top: 0;
         text-align: left;
     }
@@ -93,17 +91,17 @@
         display: none;
     }
 
-    /* Header maintains white background to hide scrolling content */
+    /* Header background removed */
     .header {
-        background-color: #ffffff;
+        background-color: transparent;
     }
 }
 
 /* Large screen breakpoint: 1341px to 2560px */
 @media screen and (min-width: 1341px) and (max-width: 2560px) {
-    /* Hero title scales from 160px to 284px */
+    /* Hero title scales from 128px to 227px (proportional to base 128px) */
     .hero-copy .title {
-        font-size: clamp(160px, calc(160px + (100vw - 1341px) * 0.101722), 284px);
+        font-size: clamp(128px, calc(128px + (100vw - 1341px) * 0.081378), 227px);
     }
 }
 

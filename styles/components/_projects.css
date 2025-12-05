@@ -8,7 +8,7 @@
 
 .project-image {
     width: 100%;
-    max-width: 1392px;
+    max-width: 1948.8px; /* Scaled for 70% width: 1392px * (70/50) = 1948.8px */
     margin-bottom: 16px;
     aspect-ratio: 696 / 494;
     background-color: var(--project-container-inactive);
@@ -37,24 +37,24 @@
 }
 
 
-/* Project image hover background colors */
-#project-container-budge-ai .project-image:hover {
+/* Project image hover background colors - trigger on container hover */
+#project-container-budge-ai:hover .project-image {
     background-color: #F3FEF3;
 }
 
-#project-container-waymaker .project-image:hover {
+#project-container-waymaker:hover .project-image {
     background-color: #FFFAF5;
 }
 
-#project-container-kwame-ai .project-image:hover {
+#project-container-kwame-ai:hover .project-image {
     background-color: #EDF5FF;
 }
 
-#project-container-blocks .project-image:hover {
+#project-container-blocks:hover .project-image {
     background-color: #F5F3FF;
 }
 
-#project-container-tbdex-go .project-image:hover {
+#project-container-tbdex-go:hover .project-image {
     background-color: #FEFFE4;
 }
 

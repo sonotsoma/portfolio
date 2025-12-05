@@ -49,43 +49,70 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Header hide/show on scroll
-let lastScrollTop = 0;
-let isScrolling = false;
-let scrollTimeout;
-const header = document.querySelector('.header');
+// Get the scrollable projects section
+const scrollableSection = document.querySelector('.right-content-scroll');
 
-function handleScroll() {
-    const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // Clear existing timeout
-    clearTimeout(scrollTimeout);
-    
-    // Mark that scrolling is happening
-    isScrolling = true;
-    
-    // Hide header when scrolling down
-    if (currentScrollTop > lastScrollTop && currentScrollTop > 50) {
-        header.classList.add('header-hidden');
-    }
-    
-    lastScrollTop = currentScrollTop;
-    
-    // Show header when scrolling stops or scrolling up (with 100ms delay)
-    scrollTimeout = setTimeout(() => {
-        isScrolling = false;
-        header.classList.remove('header-hidden');
-    }, 500);
-}
+// Redirect all scroll events to the projects section
+// let isScrolling = false;
+// let scrollTimeout;
+// const header = document.querySelector('.header');
+// let lastScrollTop = 0;
 
-// Throttle scroll events for better performance
-let ticking = false;
-window.addEventListener('scroll', () => {
-    if (!ticking) {
-        window.requestAnimationFrame(() => {
-            handleScroll();
-            ticking = false;
-        });
-        ticking = true;
-    }
-});
+// function handleScroll() {
+//     if (!scrollableSection) return;
+//     
+//     const currentScrollTop = scrollableSection.scrollTop;
+//     
+//     // Clear existing timeout
+//     clearTimeout(scrollTimeout);
+//     
+//     // Mark that scrolling is happening
+//     isScrolling = true;
+//     
+//     // Hide header when scrolling down
+//     if (currentScrollTop > lastScrollTop && currentScrollTop > 50) {
+//         header.classList.add('header-hidden');
+//     }
+//     
+//     lastScrollTop = currentScrollTop;
+//     
+//     // Show header when scrolling stops (with 100ms delay)
+//     scrollTimeout = setTimeout(() => {
+//         isScrolling = false;
+//         header.classList.remove('header-hidden');
+//     }, 100);
+// }
+
+// // Listen for scroll events on the projects section
+// if (scrollableSection) {
+//     scrollableSection.addEventListener('scroll', () => {
+//         if (!isScrolling) {
+//             window.requestAnimationFrame(() => {
+//                 handleScroll();
+//             });
+//         }
+//     });
+// }
+
+// Capture wheel events anywhere on the page and apply to projects section
+// let wheelTimeout;
+document.addEventListener('wheel', (e) => {
+    if (!scrollableSection) return;
+    
+    // Prevent default page scrolling
+    e.preventDefault();
+    
+    // Apply scroll to projects section
+    scrollableSection.scrollTop += e.deltaY;
+    
+    // Trigger header hide/show logic
+    // handleScroll();
+    
+    // Clear and reset timeout for header reappearance
+    // clearTimeout(wheelTimeout);
+    // wheelTimeout = setTimeout(() => {
+    //     if (scrollableSection.scrollTop <= 0) {
+    //         header.classList.remove('header-hidden');
+    //     }
+    // }, 100);
+}, { passive: false });

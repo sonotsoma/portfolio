@@ -5,7 +5,7 @@
     left: 0;
     right: 0;
     width: 100%;
-    background-color: #ffffff;
+    background-color: transparent;
     z-index: 1000;
     transition: transform 0.5s ease;
 }
