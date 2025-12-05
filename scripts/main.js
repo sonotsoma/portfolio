@@ -35,6 +35,39 @@ updateTime();
 // Update time every second
 setInterval(updateTime, 1000);
 
+// Fix hover width glitch by locking nav link widths
+function fixNavLinkWidths() {
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+        // Measure width in non-hover state (Inter font)
+        const width = link.offsetWidth;
+        // Set fixed width to prevent layout shift on hover
+        link.style.width = width + 'px';
+        link.style.minWidth = width + 'px';
+    });
+}
+
+// Fix "Built with Cursor" link width
+function fixGithubLinkWidth() {
+    const githubLink = document.getElementById('github-link');
+    if (githubLink) {
+        const width = githubLink.offsetWidth;
+        githubLink.style.width = width + 'px';
+        githubLink.style.minWidth = width + 'px';
+    }
+}
+
+// Fix widths on page load and resize
+window.addEventListener('load', () => {
+    fixNavLinkWidths();
+    fixGithubLinkWidth();
+});
+
+window.addEventListener('resize', () => {
+    fixNavLinkWidths();
+    fixGithubLinkWidth();
+});
+
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -95,10 +128,20 @@ const scrollableSection = document.querySelector('.right-content-scroll');
 // }
 
 // Capture wheel events anywhere on the page and apply to projects section
+// Only apply this behavior in desktop view (above 1340px), not in responsive range (992-1340px)
 // let wheelTimeout;
 document.addEventListener('wheel', (e) => {
     if (!scrollableSection) return;
     
+    // Check if we're in desktop view (above 1340px) where scroll should be redirected
+    // In responsive range (992-1340px), allow normal page scrolling
+    const windowWidth = window.innerWidth;
+    if (windowWidth >= 992 && windowWidth <= 1340) {
+        // In responsive range, allow normal scrolling
+        return;
+    }
+    
+    // Only redirect scroll in desktop view
     // Prevent default page scrolling
     e.preventDefault();
     

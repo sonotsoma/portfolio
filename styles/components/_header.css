@@ -49,20 +49,22 @@
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 64px;
+    gap: clamp(16px, calc(16px + (100vw - 800px) * 0.075), 64px); /* Scales from 16px at 800px to 64px at 1440px */
     flex: 1;
     justify-content: center;
 }
 
 .nav-links li {
-    width: 72px;
+    width: auto;
     text-decoration: none;
     border-bottom: none;
+    padding: 0;
+    margin: 0;
 }
 
 .nav-links a {
     display: inline-block;
-    width: 72px;
+    width: auto;
     text-align: center;
     text-decoration: none !important;
     color: var(--text-secondary);
@@ -71,6 +73,8 @@
     transition: font-family 0s, font-style 0s;
     position: relative;
     border: none !important;
+    padding: 0;
+    margin: 0;
 }
 
 .nav-links a:visited,
@@ -86,8 +90,8 @@
     color: var(--text-secondary);
     text-decoration: none !important;
     text-underline-position: none;
-    width: 72px;
     border: none;
+    /* Width is locked by JavaScript to match non-hover state */
 }
 
 .nav-links a::after {

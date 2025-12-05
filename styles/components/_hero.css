@@ -83,10 +83,13 @@ main {
     font-style: italic;
     text-decoration: none;
     color: var(--text-secondary);
+    display: inline-block;
+    width: auto;
 }
 
 #github-link:hover {
     color: var(--text-secondary);
+    /* Width is locked by JavaScript to match non-hover state */
 }
 
 /* Right Content / Scroll */

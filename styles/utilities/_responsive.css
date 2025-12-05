@@ -2,7 +2,7 @@
 /* Add responsive breakpoints here as needed */
 
 /* Tablet breakpoint: 992px to 1200px */
-@media screen and (min-width: 992px) and (max-width: 1340px) {
+@media screen and (min-width: 800px) and (max-width: 1340px) {
     /* Make whole page scrollable */
     body {
         overflow: auto;
@@ -14,6 +14,9 @@
         height: auto;
     }
 
+    .project-image {
+        margin-bottom: 0;
+    }
     /* Stack content vertically */
     .content-container {
         flex-direction: column;
@@ -35,8 +38,12 @@
         width: 100%;
         overflow: visible;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 32px 16px;
+        grid-template-columns: 1fr; /* Single column grid */
+        gap: 16px;
+        margin-top: 0; /* Reset negative margin from desktop view */
+        padding-top: 0; /* Reset padding from desktop view */
+        padding-bottom: 0; /* Reset padding from desktop view */
+        height: auto; /* Reset height from desktop view */
     }
 
     /* Remove margin-bottom from project containers in grid */
