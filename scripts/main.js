@@ -39,6 +39,11 @@ setInterval(updateTime, 1000);
 function fixNavLinkWidths() {
     const navLinks = document.querySelectorAll('.nav-links a');
     navLinks.forEach(link => {
+        // Temporarily remove width constraint to measure natural width
+        const originalWidth = link.style.width;
+        link.style.width = 'auto';
+        // Force a reflow to get accurate measurement
+        link.offsetWidth;
         // Measure width in non-hover state (Inter font)
         const width = link.offsetWidth;
         // Set fixed width to prevent layout shift on hover
@@ -51,7 +56,13 @@ function fixNavLinkWidths() {
 function fixGithubLinkWidth() {
     const githubLink = document.getElementById('github-link');
     if (githubLink) {
+        // Temporarily remove width constraint to measure natural width
+        const originalWidth = githubLink.style.width;
+        githubLink.style.width = 'auto';
+        // Force a reflow to get accurate measurement
+        githubLink.offsetWidth;
         const width = githubLink.offsetWidth;
+        // Set fixed width to prevent layout shift on hover
         githubLink.style.width = width + 'px';
         githubLink.style.minWidth = width + 'px';
     }
@@ -66,6 +77,37 @@ window.addEventListener('load', () => {
 window.addEventListener('resize', () => {
     fixNavLinkWidths();
     fixGithubLinkWidth();
+    positionExperienceDescription();
+});
+
+// Position experience description 32px from the end of "DESIGNER" text
+function positionExperienceDescription() {
+    const windowWidth = window.innerWidth;
+    // Only apply in 769-1024px breakpoint
+    if (windowWidth >= 769 && windowWidth <= 1024) {
+        const experienceDesc = document.querySelector('.experience-description');
+        
+        if (experienceDesc) {
+            // Since "DESIGNER" is full width and ends at the right edge,
+            // position 32px from the right edge using right property
+            experienceDesc.style.right = '100px';
+            experienceDesc.style.left = 'auto';
+            experienceDesc.style.marginRight = '0';
+        }
+    } else {
+        // Reset for other breakpoints
+        const experienceDesc = document.querySelector('.experience-description');
+        if (experienceDesc) {
+            experienceDesc.style.left = '';
+            experienceDesc.style.right = '';
+            experienceDesc.style.marginRight = '';
+        }
+    }
+}
+
+// Position on load
+window.addEventListener('load', () => {
+    positionExperienceDescription();
 });
 
 // Smooth scrolling for anchor links
@@ -85,77 +127,24 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Get the scrollable projects section
 const scrollableSection = document.querySelector('.right-content-scroll');
 
-// Redirect all scroll events to the projects section
-// let isScrolling = false;
-// let scrollTimeout;
-// const header = document.querySelector('.header');
-// let lastScrollTop = 0;
-
-// function handleScroll() {
-//     if (!scrollableSection) return;
-//     
-//     const currentScrollTop = scrollableSection.scrollTop;
-//     
-//     // Clear existing timeout
-//     clearTimeout(scrollTimeout);
-//     
-//     // Mark that scrolling is happening
-//     isScrolling = true;
-//     
-//     // Hide header when scrolling down
-//     if (currentScrollTop > lastScrollTop && currentScrollTop > 50) {
-//         header.classList.add('header-hidden');
-//     }
-//     
-//     lastScrollTop = currentScrollTop;
-//     
-//     // Show header when scrolling stops (with 100ms delay)
-//     scrollTimeout = setTimeout(() => {
-//         isScrolling = false;
-//         header.classList.remove('header-hidden');
-//     }, 100);
-// }
-
-// // Listen for scroll events on the projects section
-// if (scrollableSection) {
-//     scrollableSection.addEventListener('scroll', () => {
-//         if (!isScrolling) {
-//             window.requestAnimationFrame(() => {
-//                 handleScroll();
-//             });
-//         }
-//     });
-// }
-
 // Capture wheel events anywhere on the page and apply to projects section
-// Only apply this behavior in desktop view (above 1340px), not in responsive range (992-1340px)
+// Only apply this behavior in desktop view (above 800px), allow normal scrolling below 800px
 // let wheelTimeout;
 document.addEventListener('wheel', (e) => {
     if (!scrollableSection) return;
     
-    // Check if we're in desktop view (above 1340px) where scroll should be redirected
-    // In responsive range (992-1340px), allow normal page scrolling
+    // Allow normal page scrolling for viewport widths less than 800px
     const windowWidth = window.innerWidth;
-    if (windowWidth >= 992 && windowWidth <= 1340) {
-        // In responsive range, allow normal scrolling
+    if (windowWidth < 1025) {
+        // In mobile/tablet ranges, allow normal scrolling
         return;
     }
     
-    // Only redirect scroll in desktop view
+    // Only redirect scroll in desktop view (800px and above)
     // Prevent default page scrolling
     e.preventDefault();
     
     // Apply scroll to projects section
     scrollableSection.scrollTop += e.deltaY;
     
-    // Trigger header hide/show logic
-    // handleScroll();
-    
-    // Clear and reset timeout for header reappearance
-    // clearTimeout(wheelTimeout);
-    // wheelTimeout = setTimeout(() => {
-    //     if (scrollableSection.scrollTop <= 0) {
-    //         header.classList.remove('header-hidden');
-    //     }
-    // }, 100);
 }, { passive: false });

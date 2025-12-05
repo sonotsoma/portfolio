@@ -49,7 +49,7 @@
 .nav-links {
     display: flex;
     list-style: none;
-    gap: clamp(16px, calc(16px + (100vw - 800px) * 0.075), 64px); /* Scales from 16px at 800px to 64px at 1440px */
+    gap: clamp(16px, calc(40px + (100vw - 800px) * 0.075), 108px); /* Scales from 16px at 800px to 64px at 1440px */
     flex: 1;
     justify-content: center;
 }
@@ -111,5 +111,21 @@
 #time-display {
     white-space: nowrap;
     display: inline-block;
+}
+
+/* Menu Button - Hidden by default */
+.menu-button {
+    display: none;
+    background: transparent;
+    border: none;
+    font-family: var(--font-inter);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+    flex-shrink: 0;
 }
 

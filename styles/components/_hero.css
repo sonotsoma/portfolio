@@ -3,6 +3,9 @@ main {
     padding: 100px 16px 0 16px;
     height: 100vh;
     overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .content-container {
@@ -14,6 +17,7 @@ main {
     padding: 0;
     gap: 16px;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 /* Left Content / Fixed */
@@ -85,6 +89,7 @@ main {
     color: var(--text-secondary);
     display: inline-block;
     width: auto;
+    white-space: nowrap;
 }
 
 #github-link:hover {
