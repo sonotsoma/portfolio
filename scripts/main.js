@@ -40,20 +40,38 @@ updateTime();
 // Update time every second
 setInterval(updateTime, 1000);
 
-// Fix hover width glitch by locking nav link widths
+// Fix hover width glitch by locking nav link widths (works across all breakpoints)
 function fixNavLinkWidths() {
+    // Fix desktop nav links
     const navLinks = document.querySelectorAll('.nav-links a');
     navLinks.forEach(link => {
-        // Temporarily remove width constraint to measure natural width
-        const originalWidth = link.style.width;
-        link.style.width = 'auto';
-        // Force a reflow to get accurate measurement
-        link.offsetWidth;
-        // Measure width in non-hover state (Inter font)
-        const width = link.offsetWidth;
-        // Set fixed width to prevent layout shift on hover
-        link.style.width = width + 'px';
-        link.style.minWidth = width + 'px';
+        // Only fix if link is visible (not hidden in mobile)
+        if (window.getComputedStyle(link).display !== 'none') {
+            // Temporarily remove width constraint to measure natural width
+            const originalWidth = link.style.width;
+            link.style.width = 'auto';
+            // Force a reflow to get accurate measurement
+            link.offsetWidth;
+            // Measure width in non-hover state (Inter font)
+            const width = link.offsetWidth;
+            // Set fixed width to prevent layout shift on hover
+            link.style.width = width + 'px';
+            link.style.minWidth = width + 'px';
+        }
+    });
+    
+    // Fix mobile menu links
+    const mobileNavLinks = document.querySelectorAll('.mobile-menu-link');
+    mobileNavLinks.forEach(link => {
+        // Only fix if link is visible
+        if (window.getComputedStyle(link).display !== 'none') {
+            const originalWidth = link.style.width;
+            link.style.width = 'auto';
+            link.offsetWidth;
+            const width = link.offsetWidth;
+            link.style.width = width + 'px';
+            link.style.minWidth = width + 'px';
+        }
     });
 }
 

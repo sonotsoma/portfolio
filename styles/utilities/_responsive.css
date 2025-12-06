@@ -58,7 +58,7 @@
     }
 
     .project-image {
-        margin-bottom: 0;
+        margin-bottom: 16px;
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
@@ -149,23 +149,6 @@
     /* Remove top spacing from first project container - counteract any top spacing */
     .right-content-scroll .project-container:first-child {
         margin-top: -16px; /* Counteract any top spacing */
-    }
-
-    /* Stack project info vertically - button under title/role */
-    .project-info {
-        flex-direction: column;
-        gap: 0; /* Remove default gap */
-        align-items: flex-start;
-    }
-
-    .project-meta {
-        margin-bottom: 0;
-    }
-
-    .read-more-wrapper {
-        margin-left: 0;
-        margin-top: 8px;
-        margin-bottom: 0;
     }
 
     /* Footer spans full width in grid */
@@ -319,7 +302,7 @@
     }
 
     .project-image {
-        margin-bottom: 0;
+        margin-bottom: 16px;
     }
 
     /* Hero title - scales from 168px at 769px to 114px at 1024px (decreasing) */
@@ -369,23 +352,6 @@
         text-align: left;
         right: 100px; /* 100px from the right edge (where DESIGNER ends) */
         left: auto;
-    }
-
-    /* Stack project info vertically - button under title/role */
-    .project-info {
-        flex-direction: column;
-        gap: 0; /* Remove default gap */
-        align-items: flex-start;
-    }
-
-    .project-meta {
-        margin-bottom: 0;
-    }
-
-    .read-more-wrapper {
-        margin-left: 0;
-        margin-top: 8px;
-        margin-bottom: 0;
     }
 
     /* Footer spans full width in grid */
