@@ -326,44 +326,20 @@
     }
 }
 
-/* Tablet breakpoint: 800px to 1340px - Additional styles */
 @media screen and (min-width: 1025px) and (max-width: 1340px) {
-
-    /* Hero title scales from 128px to 173px (proportional to base 128px) */
-    .hero-copy .title {
-        font-size: clamp(128px, calc(128px + (100vw - 992px) * 0.128736), 173px);
-    }
-
-    /* Hero copy container for absolute positioning */
-    .hero-copy {
-        position: relative;
-    }
-
-    /* Subcopy aligned to right with absolute positioning, text left-justified */
-    .experience-description {
-        position: absolute;
-        left: 8%;
-        bottom: 8px;
+    main {
         padding-top: 0;
-        text-align: left;
     }
 
-    /* Hide copyright and "Built with Cursor" */
-    .left-content-fixed .footer {
-        display: none;
+    .left-content-fixed {
+        padding: 100px 16px 0 0;
     }
 
-    /* Header background removed */
-    .header {
-        background-color: transparent;
+    .experience-description {
+        max-width: 212px;
     }
-}
 
-/* Large screen breakpoint: 1341px to 2560px */
-@media screen and (min-width: 1341px) and (max-width: 2560px) {
-    /* Hero title scales from 128px to 227px (proportional to base 128px) */
-    .hero-copy .title {
-        font-size: clamp(128px, calc(128px + (100vw - 1341px) * 0.081378), 227px);
+    #project-container-budge-ai {
+        margin-top: 100px;
     }
 }
-

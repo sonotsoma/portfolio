@@ -1,6 +1,6 @@
 /* Main Content Layout */
 main {
-    padding: 100px 16px 0 16px;
+    padding: 100px 16px 16px 16px;
     height: 100vh;
     overflow: hidden;
     width: 100%;
@@ -10,11 +10,11 @@ main {
 
 .content-container {
     display: flex;
-    height: calc(100vh - 100px);
+    height: 100%;
     max-width: 2560px;
     width: 100%;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 0 0 0;
     gap: 16px;
     box-sizing: border-box;
     overflow-x: hidden;
@@ -24,7 +24,7 @@ main {
 /* Note: #ampersand font animation is in utilities/_animations.css */
 
 .left-content-fixed {
-    flex: 0 0 40%;
+    flex: 0 0 40%;                           
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -102,10 +102,6 @@ main {
     flex: 1 1 60%;
     overflow-y: auto;
     overflow-x: hidden;
-    height: calc(100% + 100px); /* Account for negative margin */
-    padding: 0;
-    margin-top: -100px; /* Allow scrolling to top of screen */
-    padding-top: 100px; /* Restore visual spacing */
     padding-bottom: 16px; /* Bottom padding for footer visibility */
     min-width: 0;
     box-sizing: border-box;
@@ -117,4 +113,3 @@ main {
 .right-content-scroll::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
 }
-
