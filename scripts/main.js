@@ -83,25 +83,44 @@ window.addEventListener('resize', () => {
 // Position experience description 32px from the end of "DESIGNER" text
 function positionExperienceDescription() {
     const windowWidth = window.innerWidth;
-    // Only apply in 769-1024px breakpoint
+    const experienceDesc = document.querySelector('.experience-description');
+    
+    if (!experienceDesc) return;
+    
+    // Only apply dynamic positioning in 769-1024px breakpoint
     if (windowWidth >= 769 && windowWidth <= 1024) {
-        const experienceDesc = document.querySelector('.experience-description');
+        // Find the "DESIGNER" text element (last title-line)
+        const titleLines = document.querySelectorAll('.title-line');
+        const designerLine = titleLines[titleLines.length - 1]; // Last line is "DESIGNER"
         
-        if (experienceDesc) {
-            // Since "DESIGNER" is full width and ends at the right edge,
-            // position 32px from the right edge using right property
-            experienceDesc.style.right = '100px';
-            experienceDesc.style.left = 'auto';
-            experienceDesc.style.marginRight = '0';
+        if (designerLine) {
+            // Get the container (hero-copy or left-content-fixed)
+            const heroCopy = document.querySelector('.hero-copy');
+            const container = heroCopy || experienceDesc.parentElement;
+            
+            if (container) {
+                // Get the bounding rectangles
+                const containerRect = container.getBoundingClientRect();
+                const designerRect = designerLine.getBoundingClientRect();
+                
+                // Calculate where "DESIGNER" ends (right edge of the text)
+                const designerEnd = designerRect.right - containerRect.left;
+                
+                // Position 32px from the end of "DESIGNER"
+                // Since we're using right positioning, calculate from container width
+                const containerWidth = containerRect.width;
+                const rightPosition = containerWidth - designerEnd - 32;
+                
+                experienceDesc.style.right = `${Math.max(0, rightPosition)}px`;
+                experienceDesc.style.left = 'auto';
+                experienceDesc.style.marginRight = '0';
+            }
         }
     } else {
         // Reset for other breakpoints
-        const experienceDesc = document.querySelector('.experience-description');
-        if (experienceDesc) {
-            experienceDesc.style.left = '';
-            experienceDesc.style.right = '';
-            experienceDesc.style.marginRight = '';
-        }
+        experienceDesc.style.left = '';
+        experienceDesc.style.right = '';
+        experienceDesc.style.marginRight = '';
     }
 }
 

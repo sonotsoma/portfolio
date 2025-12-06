@@ -99,9 +99,8 @@
         box-sizing: border-box;
     }
 
-    /* Hero title - scales from 68px at 321px to 128px at 800px */
+    /* Hero title - scales from 72px at 321px to 132x at 800px */
     .hero-copy .title {
-        font-size: clamp(72px, calc(72px + (100vw - 321px) * 0.125), 128px);
         width: 100%;
         max-width: 100%;
         word-break: break-word;
@@ -218,6 +217,11 @@
     .project-image-content {
         max-height: 40%;
     }
+
+    /* Hero title - scales from 68px at 321px to 104px at 480px */
+    .hero-copy .title {
+        font-size: clamp(68px, calc(68px + (100vw - 321px) * 0.2264), 104px);
+    }
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
@@ -227,6 +231,11 @@
 
     .project-image-content {
         max-height: 50%;
+    }
+
+    /* Hero title - scales from 104px at 481px to 168px at 768px */
+    .hero-copy .title {
+        font-size: clamp(104px, calc(104px + (100vw - 481px) * 0.223), 168px);
     }
 }
 
@@ -251,6 +260,11 @@
 
     .project-image {
         margin-bottom: 0;
+    }
+
+    /* Hero title - scales from 168px at 769px to 114px at 1024px (decreasing) */
+    .hero-copy .title {
+        font-size: clamp(114px, calc(168px - (100vw - 769px) * 0.212), 168px);
     }
 
     /* Stack content vertically */
@@ -327,6 +341,11 @@
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1340px) {
+    /* Hero title - scales from 114px at 1025px to 284px at 2560px */
+    .hero-copy .title {
+        font-size: clamp(114px, calc(114px + (100vw - 1025px) * 0.1107), 284px);
+    }
+
     main {
         padding-top: 0;
     }
@@ -341,5 +360,12 @@
 
     #project-container-budge-ai {
         margin-top: 100px;
+    }
+}
+
+@media screen and (min-width: 1341px) and (max-width: 2560px) {
+    /* Hero title - scales from 114px at 1025px to 284px at 2560px (continues from 1025-1340px) */
+    .hero-copy .title {
+        font-size: clamp(114px, calc(114px + (100vw - 1025px) * 0.1107), 284px);
     }
 }

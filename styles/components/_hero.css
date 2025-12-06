@@ -24,7 +24,7 @@ main {
 /* Note: #ampersand font animation is in utilities/_animations.css */
 
 .left-content-fixed {
-    flex: 0 0 40%;                           
+    flex: 0 0 50%;                           
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -99,7 +99,7 @@ main {
 
 /* Right Content / Scroll */
 .right-content-scroll {
-    flex: 1 1 60%;
+    flex: 1 1 50%;
     overflow-y: auto;
     overflow-x: hidden;
     padding-bottom: 16px; /* Bottom padding for footer visibility */
