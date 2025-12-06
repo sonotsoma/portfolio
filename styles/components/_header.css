@@ -129,3 +129,123 @@
     flex-shrink: 0;
 }
 
+/* Mobile Menu Drawer */
+.mobile-menu-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffff;
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+.mobile-menu-drawer.drawer-open {
+    display: flex;
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 28px;
+}
+
+.mobile-menu-name {
+    font-family: var(--font-inter);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.mobile-menu-close {
+    background: transparent;
+    border: none;
+    font-family: var(--font-inter);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: normal;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+}
+
+.mobile-menu-drawer.drawer-open .mobile-menu-close {
+    transform: translateY(0);
+    transition-delay: 0.05s;
+}
+
+.mobile-menu-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding-top: 0;
+}
+
+.mobile-menu-link {
+    font-family: var(--font-inter);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+}
+
+.mobile-menu-drawer.drawer-open .mobile-menu-link {
+    transform: translateY(0);
+}
+
+/* Stagger the animation delays for each link */
+.mobile-menu-drawer.drawer-open .mobile-menu-link:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.mobile-menu-drawer.drawer-open .mobile-menu-link:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.mobile-menu-drawer.drawer-open .mobile-menu-link:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.mobile-menu-drawer.drawer-open .mobile-menu-link:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.mobile-menu-link:hover {
+    font-family: var(--font-instrument-serif);
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.mobile-menu-time {
+    margin-top: auto;
+    padding-bottom: 16px;
+    font-family: var(--font-inter);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+    flex-shrink: 0;
+}
+
+.mobile-menu-drawer.drawer-open .mobile-menu-time {
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+

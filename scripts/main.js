@@ -27,6 +27,11 @@ function updateTime() {
     if (timeDisplayFooter) {
         timeDisplayFooter.textContent = timeString;
     }
+    
+    const timeDisplayMobile = document.getElementById('time-display-mobile');
+    if (timeDisplayMobile) {
+        timeDisplayMobile.textContent = timeString;
+    }
 }
 
 // Update time immediately on page load
@@ -78,6 +83,7 @@ window.addEventListener('resize', () => {
     fixNavLinkWidths();
     fixGithubLinkWidth();
     positionExperienceDescription();
+    adjustKwameAIImageSize();
 });
 
 // Position experience description 32px from the end of "DESIGNER" text
@@ -127,7 +133,82 @@ function positionExperienceDescription() {
 // Position on load
 window.addEventListener('load', () => {
     positionExperienceDescription();
+    adjustKwameAIImageSize();
+    initMobileMenu();
 });
+
+// Mobile Menu Toggle
+function initMobileMenu() {
+    const menuButton = document.getElementById('menu-button');
+    const mobileDrawer = document.getElementById('mobile-menu-drawer');
+    const mobileClose = document.getElementById('mobile-menu-close');
+    const contentContainer = document.querySelector('.content-container');
+    
+    if (!menuButton || !mobileDrawer || !mobileClose) return;
+    
+    // Toggle drawer function
+    function openDrawer() {
+        mobileDrawer.classList.add('drawer-open');
+        menuButton.textContent = 'CLOSE';
+        if (contentContainer) {
+            contentContainer.style.display = 'none';
+        }
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeDrawer() {
+        mobileDrawer.classList.remove('drawer-open');
+        menuButton.textContent = 'MENU';
+        if (contentContainer) {
+            contentContainer.style.display = '';
+        }
+        document.body.style.overflow = '';
+    }
+    
+    // Menu button click - toggle based on current state
+    menuButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if (mobileDrawer.classList.contains('drawer-open')) {
+            closeDrawer();
+        } else {
+            openDrawer();
+        }
+    });
+    
+    // Close button click
+    mobileClose.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        closeDrawer();
+    });
+}
+
+// Adjust Kwame AI image size to be 10% larger than base .project-image-content
+function adjustKwameAIImageSize() {
+    const baseImage = document.querySelector('.project-image-content');
+    const kwameImage = document.querySelector('#project-container-kwame-ai .project-image-content');
+    
+    if (!baseImage || !kwameImage) return;
+    
+    // Get computed style of base image
+    const computedStyle = window.getComputedStyle(baseImage);
+    const baseMaxHeight = computedStyle.maxHeight;
+    
+    // If max-height is a percentage, calculate 10% more
+    if (baseMaxHeight && baseMaxHeight.includes('%')) {
+        const basePercentage = parseFloat(baseMaxHeight);
+        const newPercentage = basePercentage * 1.2; // Add 12%
+        kwameImage.style.maxHeight = `${newPercentage}%`;
+    } else if (baseMaxHeight && baseMaxHeight !== 'none') {
+        // If it's a pixel value, calculate 10% more
+        const baseValue = parseFloat(baseMaxHeight);
+        const newValue = baseValue * 1.1;
+        const unit = baseMaxHeight.replace(/[0-9.]/g, '');
+        kwameImage.style.maxHeight = `${newValue}${unit}`;
+    }
+}
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
