@@ -33,30 +33,36 @@
     transition: transform 0.5s ease, filter 0.5s ease;
 }
 
-.project-container:hover .project-image-content {
+.project-container:hover .project-image-content,
+.project-container.touch-hover-effect .project-image-content {
     transform: scale(1.075);
     filter: grayscale(0%);
 }
 
 
 /* Project image hover background colors - trigger on container hover */
-#project-container-budge-ai:hover .project-image {
+#project-container-budge-ai:hover .project-image,
+#project-container-budge-ai.touch-hover-effect .project-image {
     background-color: #F3FEF3;
 }
 
-#project-container-waymaker:hover .project-image {
+#project-container-waymaker:hover .project-image,
+#project-container-waymaker.touch-hover-effect .project-image {
     background-color: #FFFAF5;
 }
 
-#project-container-kwame-ai:hover .project-image {
+#project-container-kwame-ai:hover .project-image,
+#project-container-kwame-ai.touch-hover-effect .project-image {
     background-color: #EDF5FF;
 }
 
-#project-container-blocks:hover .project-image {
+#project-container-blocks:hover .project-image,
+#project-container-blocks.touch-hover-effect .project-image {
     background-color: #F5F3FF;
 }
 
-#project-container-tbdex-go:hover .project-image {
+#project-container-tbdex-go:hover .project-image,
+#project-container-tbdex-go.touch-hover-effect .project-image {
     background-color: #FEFFE4;
 }
 
@@ -115,11 +121,13 @@
 }
 
 /* Slide animation on hover */
-.project-container:hover .project-role {
+.project-container:hover .project-role,
+.project-container.touch-hover-effect .project-role {
     transform: translateY(-100%);
 }
 
-.project-container:hover .project-role-alt {
+.project-container:hover .project-role-alt,
+.project-container.touch-hover-effect .project-role-alt {
     transform: translateY(0);
 }
 
@@ -182,15 +190,18 @@
     cursor: pointer;
 }
 
-.project-container:hover .read-more-btn {
+.project-container:hover .read-more-btn,
+.project-container.touch-hover-effect .read-more-btn {
     padding-right: 8px;
 }
 
-.project-container:hover .arrow-right-container {
+.project-container:hover .arrow-right-container,
+.project-container.touch-hover-effect .arrow-right-container {
     width: 20px;
 }
 
-.project-container:hover .arrow-right-icon {
+.project-container:hover .arrow-right-icon,
+.project-container.touch-hover-effect .arrow-right-icon {
     transform: translateX(0);
     opacity: 1;
 }

@@ -84,7 +84,8 @@
     border: none !important;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.touch-hover-effect {
     font-family: var(--font-instrument-serif);
     font-style: italic;
     color: var(--text-secondary);
@@ -209,24 +210,8 @@
     transform: translateY(0);
 }
 
-/* Stagger the animation delays for each link */
-.mobile-menu-drawer.drawer-open .mobile-menu-link:nth-child(1) {
-    transition-delay: 0.1s;
-}
-
-.mobile-menu-drawer.drawer-open .mobile-menu-link:nth-child(2) {
-    transition-delay: 0.2s;
-}
-
-.mobile-menu-drawer.drawer-open .mobile-menu-link:nth-child(3) {
-    transition-delay: 0.3s;
-}
-
-.mobile-menu-drawer.drawer-open .mobile-menu-link:nth-child(4) {
-    transition-delay: 2.4s;
-}
-
-.mobile-menu-link:hover {
+.mobile-menu-link:hover,
+.mobile-menu-link.touch-hover-effect {
     font-family: var(--font-instrument-serif);
     font-style: italic;
     color: var(--text-secondary);
