@@ -46,31 +46,60 @@ function fixNavLinkWidths() {
     const navLinks = document.querySelectorAll('.nav-links a');
     navLinks.forEach(link => {
         // Only fix if link is visible (not hidden in mobile)
-        if (window.getComputedStyle(link).display !== 'none') {
-            // Temporarily remove width constraint to measure natural width
-            const originalWidth = link.style.width;
-            link.style.width = 'auto';
-            // Force a reflow to get accurate measurement
-            link.offsetWidth;
+        const computedStyle = window.getComputedStyle(link);
+        if (computedStyle.display !== 'none' && computedStyle.visibility !== 'hidden') {
+            // Remove any existing width constraints
+            link.style.width = '';
+            link.style.minWidth = '';
+            
+            // Force remove hover state by temporarily removing the class or using pointer-events
+            const originalPointerEvents = link.style.pointerEvents;
+            link.style.pointerEvents = 'none';
+            
+            // Force a reflow to ensure we're measuring in non-hover state
+            void link.offsetWidth;
+            
             // Measure width in non-hover state (Inter font)
             const width = link.offsetWidth;
+            
+            // Restore pointer events
+            link.style.pointerEvents = originalPointerEvents;
+            
             // Set fixed width to prevent layout shift on hover
-            link.style.width = width + 'px';
-            link.style.minWidth = width + 'px';
+            if (width > 0) {
+                link.style.width = width + 'px';
+                link.style.minWidth = width + 'px';
+            }
         }
     });
     
     // Fix mobile menu links
     const mobileNavLinks = document.querySelectorAll('.mobile-menu-link');
     mobileNavLinks.forEach(link => {
-        // Only fix if link is visible
-        if (window.getComputedStyle(link).display !== 'none') {
-            const originalWidth = link.style.width;
-            link.style.width = 'auto';
-            link.offsetWidth;
+        const computedStyle = window.getComputedStyle(link);
+        if (computedStyle.display !== 'none' && computedStyle.visibility !== 'hidden') {
+            // Remove any existing width constraints
+            link.style.width = '';
+            link.style.minWidth = '';
+            
+            // Force remove hover state
+            const originalPointerEvents = link.style.pointerEvents;
+            link.style.pointerEvents = 'none';
+            
+            // Force a reflow
+            void link.offsetWidth;
+            
+            // Measure width
             const width = link.offsetWidth;
-            link.style.width = width + 'px';
-            link.style.minWidth = width + 'px';
+            
+            // Restore pointer events
+            link.style.pointerEvents = originalPointerEvents;
+            
+            // Set fixed width
+            if (width > 0) {
+                link.style.width = width + 'px';
+                link.style.minWidth = width + 'px';
+            }
         }
     });
 }
@@ -93,15 +122,24 @@ function fixGithubLinkWidth() {
 
 // Fix widths on page load and resize
 window.addEventListener('load', () => {
-    fixNavLinkWidths();
-    fixGithubLinkWidth();
+    // Use requestAnimationFrame to ensure fonts are loaded and layout is stable
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            fixNavLinkWidths();
+            fixGithubLinkWidth();
+        }, 100);
+    });
 });
 
 window.addEventListener('resize', () => {
-    fixNavLinkWidths();
-    fixGithubLinkWidth();
-    positionExperienceDescription();
-    adjustKwameAIImageSize();
+    // Debounce resize events
+    clearTimeout(window.resizeTimeout);
+    window.resizeTimeout = setTimeout(() => {
+        fixNavLinkWidths();
+        fixGithubLinkWidth();
+        positionExperienceDescription();
+        adjustKwameAIImageSize();
+    }, 150);
 });
 
 // Position experience description 32px from the end of "DESIGNER" text
@@ -201,6 +239,16 @@ function initMobileMenu() {
         e.stopPropagation();
         closeDrawer();
     });
+    
+    // Close drawer if viewport width exceeds 768px (mobile breakpoint)
+    function checkAndCloseDrawer() {
+        if (window.innerWidth > 768 && mobileDrawer.classList.contains('drawer-open')) {
+            closeDrawer();
+        }
+    }
+    
+    // Check on resize
+    window.addEventListener('resize', checkAndCloseDrawer);
 }
 
 // Adjust Kwame AI image size to be 10% larger than base .project-image-content
