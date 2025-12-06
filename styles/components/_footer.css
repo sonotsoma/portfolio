@@ -10,6 +10,11 @@
     padding-top: 8px;
 }
 
+/* Mobile footer - hidden by default */
+.footer-mobile {
+    display: none;
+}
+
 .nav-footer {
     padding: 0 0 0 0;
 }
