@@ -191,6 +191,7 @@ window.addEventListener('load', () => {
     positionExperienceDescription();
     adjustKwameAIImageSize();
     initMobileMenu();
+    initTouchHover();
 });
 
 // Mobile Menu Toggle
@@ -249,6 +250,101 @@ function initMobileMenu() {
     
     // Check on resize
     window.addEventListener('resize', checkAndCloseDrawer);
+}
+
+// Simulate hover effects on mobile using touch events (hybrid approach)
+function initTouchHover() {
+    // Only apply on mobile/tablet (below 1025px where hover doesn't work naturally)
+    if (window.innerWidth >= 1025) return;
+    
+    let isScrolling = false;
+    let touchStartY = null;
+    let touchStartX = null;
+    let scrollTimeout = null;
+    const SCROLL_THRESHOLD = 1;
+    
+    function clearAllHoverEffects() {
+        document.querySelectorAll('.touch-hover-effect').forEach(el => {
+            el.classList.remove('touch-hover-effect');
+        });
+    }
+    
+    function findTargetElement(x, y) {
+        const elementUnderTouch = document.elementFromPoint(x, y);
+        if (!elementUnderTouch) return null;
+        
+        const projectContainer = elementUnderTouch.closest('.project-container');
+        if (projectContainer) return projectContainer;
+        
+        const navLink = elementUnderTouch.closest('.mobile-menu-link, .nav-links a');
+        if (navLink) return navLink;
+        
+        return null;
+    }
+    
+    // Detect scroll via scroll events
+    window.addEventListener('scroll', () => {
+        isScrolling = true;
+        clearAllHoverEffects();
+        
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            isScrolling = false;
+        }, 150);
+    }, { passive: true });
+    
+    document.addEventListener('touchstart', (e) => {
+        if (isScrolling) return;
+        
+        const touch = e.touches[0];
+        if (touch) {
+            touchStartY = touch.clientY;
+            touchStartX = touch.clientX;
+            
+            const target = findTargetElement(touch.clientX, touch.clientY);
+            if (target) {
+                clearAllHoverEffects();
+                target.classList.add('touch-hover-effect');
+            }
+        }
+    }, { passive: true });
+    
+    document.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        if (!touch || touchStartY === null) return;
+        
+        const deltaY = Math.abs(touch.clientY - touchStartY);
+        const deltaX = Math.abs(touch.clientX - touchStartX);
+        const totalMovement = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        
+        // If movement is significant, it's scrolling
+        if (totalMovement > SCROLL_THRESHOLD) {
+            isScrolling = true;
+            clearAllHoverEffects();
+            return;
+        }
+        
+        // Not scrolling - update hover
+        if (!isScrolling) {
+            const target = findTargetElement(touch.clientX, touch.clientY);
+            clearAllHoverEffects();
+            if (target) {
+                target.classList.add('touch-hover-effect');
+            }
+        }
+    }, { passive: true });
+    
+    document.addEventListener('touchend', (e) => {
+        clearAllHoverEffects();
+        touchStartY = null;
+        touchStartX = null;
+    }, { passive: true });
+    
+    document.addEventListener('touchcancel', (e) => {
+        clearAllHoverEffects();
+        touchStartY = null;
+        touchStartX = null;
+    }, { passive: true });
 }
 
 // Adjust Kwame AI image size to be 10% larger than base .project-image-content

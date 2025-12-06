@@ -188,7 +188,7 @@
 .mobile-menu-nav {
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 48px;
     padding-top: 0;
 }
 
@@ -223,7 +223,7 @@
 }
 
 .mobile-menu-drawer.drawer-open .mobile-menu-link:nth-child(4) {
-    transition-delay: 0.4s;
+    transition-delay: 2.4s;
 }
 
 .mobile-menu-link:hover {
