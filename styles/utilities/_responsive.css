@@ -336,7 +336,7 @@
         margin-top: 0; /* Reset negative margin from desktop view */
         margin-bottom: 0; /* Reset negative margin */
         padding-top: 0; /* Reset padding from desktop view */
-        padding-bottom: 0; /* Reset padding from desktop view */
+        padding-bottom: 16px; /* Reset padding from desktop view */
         height: auto; /* Reset height from desktop view */
     }
 
@@ -370,6 +370,12 @@
    /* Scrollable area padding */
     main {
         padding-top: 0;
+    }
+
+    @media screen and (min-width: 1025px) and (max-width: 1248px) {
+        .nav-footer-links {
+            gap: clamp(16px, 3vw, 32px);
+        }
     }
 
     .left-content-fixed {
