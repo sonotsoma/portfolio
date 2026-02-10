@@ -6,6 +6,12 @@
     margin-bottom: 0;
 }
 
+.project-image-link {
+    display: block;
+    text-decoration: none;
+    width: 100%;
+}
+
 .project-image {
     width: 100%;
     max-width: 1948.8px; /* Scaled for 70% width: 1392px * (70/50) = 1948.8px */
@@ -151,6 +157,7 @@
     border: 1px solid var(--border-colour);
     padding: 4px 4px 4px 8px;
     cursor: pointer;
+    text-decoration: none;
     letter-spacing: -0.04em;
     display: flex;
     align-items: center;
