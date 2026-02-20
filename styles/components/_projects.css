@@ -14,7 +14,8 @@
 
 .project-image {
     width: 100%;
-    max-width: 1948.8px; /* Scaled for 70% width: 1392px * (70/50) = 1948.8px */
+    max-width: 1948.8px;
+    /* Scaled for 70% width: 1392px * (70/50) = 1948.8px */
     margin-bottom: 16px;
     aspect-ratio: 696 / 494;
     background-color: var(--project-container-inactive);
@@ -70,6 +71,10 @@
 #project-container-tbdex-go:hover .project-image,
 #project-container-tbdex-go.touch-hover-effect .project-image {
     background-color: #FEFFE4;
+}
+
+#project-container-tbdex-go {
+    padding-bottom: 16px;
 }
 
 .project-info {
@@ -212,4 +217,3 @@
     transform: translateX(0);
     opacity: 1;
 }
-

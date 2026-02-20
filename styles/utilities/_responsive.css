@@ -2,9 +2,16 @@
 /* Add responsive breakpoints here as needed */
 
 /* Mobile breakpoint: 0px to 576px */
-@media screen and (min-width: 0px) and (max-width: 480px), screen and (min-width: 481px) and (max-width: 768px) {
-    /* Hide navigation links and time in header */
+@media screen and (min-width: 0px) and (max-width: 480px),
+screen and (min-width: 481px) and (max-width: 768px) {
+
+    /* Hide navigation links, header status and time in header */
     .nav-links {
+        display: none;
+    }
+
+    .header-status,
+    .logo-circle {
         display: none;
     }
 
@@ -29,6 +36,7 @@
         max-width: 100%;
         box-sizing: border-box;
     }
+
     /* Make whole page scrollable - prevent horizontal scroll */
     html {
         overflow-x: hidden;
@@ -94,7 +102,8 @@
         flex: 1 1 100%;
         width: 100%;
         max-width: 100%;
-        padding: 0 0 40px 0; /* 40px spacing before scrollable area */
+        padding: 0 0 40px 0;
+        /* 40px spacing before scrollable area */
         overflow: visible;
         box-sizing: border-box;
     }
@@ -106,9 +115,12 @@
         word-break: break-word;
     }
 
+
+
     /* Experience description responsive */
     .experience-description {
-        position: relative; /* Remove absolute positioning */
+        position: relative;
+        /* Remove absolute positioning */
         width: 100%;
         max-width: 212px;
         /* Scale margin-left from 320px at larger viewports to 0px at 240px */
@@ -119,20 +131,35 @@
     }
 
     /* Right content - full width, stacked below */
-    .right-content-scroll {
+    .right-content {
         flex: 1 1 100%;
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        height: auto;
+    }
+
+    .right-content-scroll {
         width: 100%;
         max-width: 100%;
         overflow-x: hidden;
         overflow-y: visible;
         display: grid;
-        grid-template-columns: 1fr; /* Single column grid */
+        grid-template-columns: 1fr;
+        /* Single column grid */
         gap: 16px;
-        margin-top: 0; /* Reset negative margin from desktop view */
-        margin-bottom: 0; /* Reset negative margin */
-        padding-top: 0; /* Reset padding from desktop view */
-        padding-bottom: 0; /* Reset padding from desktop view */
-        height: auto; /* Reset height from desktop view */
+        margin-top: 0;
+        /* Reset negative margin from desktop view */
+        margin-bottom: 0;
+        /* Reset negative margin */
+        padding-top: 0;
+        /* Reset padding from desktop view */
+        padding-bottom: 0;
+        /* Reset padding from desktop view */
+        height: auto;
+        /* Reset height from desktop view */
         box-sizing: border-box;
     }
 
@@ -148,12 +175,12 @@
 
     /* Remove top spacing from first project container - counteract any top spacing */
     .right-content-scroll .project-container:first-child {
-        margin-top: -16px; /* Counteract any top spacing */
+        margin-top: -16px;
+        /* Counteract any top spacing */
     }
 
     /* Footer spans full width in grid */
-    .right-content-scroll footer.footer {
-        grid-column: 1 / -1;
+    .right-content footer.footer {
         margin-top: 40px;
         width: 100%;
         max-width: 100%;
@@ -200,7 +227,8 @@
     .footer-mobile {
         display: flex;
         flex-direction: column;
-        padding-top: 8px; /* Spacing between divider line and nav elements */
+        padding-top: 8px;
+        /* Spacing between divider line and nav elements */
     }
 
     .footer-mobile-content {
@@ -283,6 +311,7 @@
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
+
     /* Make whole page scrollable */
     html {
         overflow: auto;
@@ -321,23 +350,37 @@
     .left-content-fixed {
         flex: 1 1 100%;
         width: 100%;
-        padding: 0 0 40px 0; /* 40px spacing before scrollable area */
+        padding: 0 0 40px 0;
+        /* 40px spacing before scrollable area */
         overflow: visible;
     }
 
     /* Right content - full width, stacked below */
-    .right-content-scroll {
+    .right-content {
         flex: 1 1 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .right-content-scroll {
         width: 100%;
         overflow: visible;
         display: grid;
-        grid-template-columns: 1fr; /* Single column grid */
+        grid-template-columns: 1fr;
+        /* Single column grid */
         gap: 16px;
-        margin-top: 0; /* Reset negative margin from desktop view */
-        margin-bottom: 0; /* Reset negative margin */
-        padding-top: 0; /* Reset padding from desktop view */
-        padding-bottom: 16px; /* Reset padding from desktop view */
-        height: auto; /* Reset height from desktop view */
+        margin-top: 0;
+        /* Reset negative margin from desktop view */
+        margin-bottom: 0;
+        /* Reset negative margin */
+        padding-top: 0;
+        /* Reset padding from desktop view */
+        padding-bottom: 16px;
+        /* Reset padding from desktop view */
+        height: auto;
+        /* Reset height from desktop view */
     }
 
     /* Remove margin-bottom from project containers in grid */
@@ -345,18 +388,20 @@
         margin-bottom: 0;
     }
 
+
+
     /* Experience description responsive */
     .experience-description {
         position: absolute;
         bottom: 8px;
         text-align: left;
-        right: 100px; /* 100px from the right edge (where DESIGNER ends) */
+        right: 100px;
+        /* 100px from the right edge (where DESIGNER ends) */
         left: auto;
     }
 
     /* Footer spans full width in grid */
-    .right-content-scroll footer.footer {
-        grid-column: 1 / -1;
+    .right-content footer.footer {
         margin-top: 40px;
     }
 
@@ -366,8 +411,10 @@
     }
 }
 
-@media screen and (min-width: 1025px) and (max-width: 1340px), screen and (min-width: 1341px) and (max-width: 2560px) {
-   /* Scrollable area padding */
+@media screen and (min-width: 1025px) and (max-width: 1340px),
+screen and (min-width: 1341px) and (max-width: 2560px) {
+
+    /* Scrollable area padding */
     main {
         padding-top: 0;
     }
@@ -396,6 +443,7 @@
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1340px) {
+
     /* Hero title - scales from 114px at 1025px to 284px at 2560px */
     .hero-copy .title {
         font-size: clamp(114px, calc(114px + (100vw - 1025px) * 0.1107), 284px);
@@ -403,6 +451,7 @@
 }
 
 @media screen and (min-width: 1341px) and (max-width: 2560px) {
+
     /* Hero title - scales from 114px at 1025px to 284px at 2560px (continues from 1025-1340px) */
     /* Font stops growing at 2560px (max-width constraint) */
     .hero-copy .title {
@@ -415,6 +464,7 @@
 }
 
 @media screen and (min-width: 2561px) {
+
     /* Hero title - fixed at 284px (max size reached at 2560px) */
     .hero-copy .title {
         font-size: 284px;
