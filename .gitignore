@@ -2,7 +2,7 @@
 .DS_Store
 Thumbs.db
 
-# Editor files
+# Editor
 .vscode/
 .idea/
 *.swp
