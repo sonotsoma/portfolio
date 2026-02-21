@@ -102,7 +102,7 @@
     border-radius: 50%;
     background-color: #28C122;
     display: inline-block;
-    animation: blink 1500ms steps(1, end) infinite;
+    animation: blink 2000ms steps(1, end) infinite;
 }
 
 @keyframes blink {

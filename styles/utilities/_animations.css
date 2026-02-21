@@ -1,25 +1,27 @@
 /* Ampersand font transition animation */
 @keyframes ampersand-font-switch {
-    0%, 49.99% {
+
+    0%,
+    49.99% {
         font-family: 'Meie Script', cursive;
         line-height: 64%;
     }
-    50%, 100% {
+
+    50%,
+    100% {
         font-family: 'Cedarville Cursive', cursive;
         line-height: 64%;
     }
 }
 
-/* Default state - Meie Script with animation always playing */
+/* Default state - Meie Script with animation paused by default */
 #ampersand {
     font-family: 'Meie Script', cursive;
     display: inline;
     line-height: 64%;
-    animation: ampersand-font-switch 2000ms steps(1, end) infinite;
 }
 
-/* Stop animation when hovering over the ampersand */
-#ampersand:hover {
-    animation-play-state: paused;
+/* Play animation when hovering over the hero copy block */
+.hero-copy:hover #ampersand {
+    animation: ampersand-font-switch 3000ms steps(1, end) infinite;
 }
-
