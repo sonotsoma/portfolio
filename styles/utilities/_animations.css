@@ -14,14 +14,15 @@
     }
 }
 
-/* Default state - Meie Script with animation paused by default */
+/* Switch between script faces continuously. */
 #ampersand {
     font-family: 'Meie Script', cursive;
     display: inline;
     line-height: 64%;
+    animation: ampersand-font-switch 3000ms infinite;
 }
 
-/* Play animation when hovering over the hero copy block */
+/* Keep the current script face while the hero copy is hovered. */
 .hero-copy:hover #ampersand {
-    animation: ampersand-font-switch 3000ms steps(1, end) infinite;
+    animation-play-state: paused;
 }
